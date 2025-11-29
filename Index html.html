@@ -12,7 +12,15 @@
     font-family: 'Segoe UI', sans-serif;
     background: #e0f7fa;
     color: #222;
+    transition: background .3s, color .3s;
   }
+
+  /* DARK MODE */
+  body.dark { background:#121212; color:#e0e0e0; }
+  body.dark section { background:#1e1e1e; }
+  body.dark header { background:#003d36; }
+  body.dark #contact-fixed { background:#1e1e1e; }
+  body.dark nav a { color:#80cbc4; }
 
   /* HEADER */
   header {
@@ -24,12 +32,27 @@
     justify-content: space-between;
     color: white;
     z-index: 1000;
+    align-items: center;
   }
   nav a {
     color: #b2dfdb;
     margin-left: 2rem;
     text-decoration: none;
+    transition: .3s ease;
   }
+  nav a:hover { color:white; }
+
+  /* DARK MODE BUTTON */
+  #mode-btn {
+    background:white;
+    color:#00796b;
+    padding:8px 15px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    transition:.3s;
+  }
+  #mode-btn:hover { opacity:.7; }
 
   /* MAIN */
   main {
@@ -38,13 +61,20 @@
     padding: 2rem;
   }
 
-  /* GENERIC SECTIONS */
+  /* SECTIONS */
   section {
     background: white;
     padding: 2rem;
     border-radius: 15px;
     margin-bottom: 3rem;
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    opacity:0;
+    transform: translateY(40px);
+    transition: .7s ease;
+  }
+  section.visible {
+    opacity:1;
+    transform: translateY(0);
   }
   h2 {
     font-size: 2.4rem;
@@ -54,7 +84,7 @@
     margin-bottom: 1.5rem;
   }
 
-  /* PROJECTS */
+  /* PROJETS */
   #projets ul {
     list-style: none;
     display: grid;
@@ -75,7 +105,7 @@
     box-shadow: 0 16px 30px rgba(0,0,0,0.15);
   }
 
-  /* CONTACT FIXED */
+  /* CONTACT */
   #contact-fixed {
     position: fixed;
     top: 80px;
@@ -117,35 +147,35 @@
   #lightbox button {
     margin: 5px;
     padding:10px 25px;
-    font-size:1rem;
     cursor:pointer;
   }
 </style>
 </head>
+
 <body>
 
 <header>
   <h1>Dethie Amadou SY</h1>
+
   <nav>
     <a href="#apropos">À propos</a>
     <a href="#experience">Expérience</a>
     <a href="#projets">Projets</a>
   </nav>
+
+  <button id="mode-btn">🌙 Mode sombre</button>
 </header>
 
 <main>
 
-<!-- À PROPOS -->
 <section id="apropos">
   <h2>À propos de moi</h2>
   <p>
-    Je suis passionné d’ingénierie, d’automatisme, d’électronique et de systèmes énergétiques.
-    Rigoureux, curieux et motivé, j’aime analyser, concevoir et optimiser des systèmes
-    techniques complexes.
+    Je suis Mr SY Dethie Amadou, étudiant à l'IUT Créteil Vitry passionné d’ingénierie, d’automatisme, d’électronique et de systèmes énergétiques.
+    Je souhaite continuer après le BUT GEII en école d'ingénieur en apprentissage dans le domaine des énergies.
   </p>
 </section>
 
-<!-- EXPÉRIENCE -->
 <section id="experience">
   <h2>Expérience</h2>
 
@@ -166,7 +196,6 @@
   </ul>
 </section>
 
-<!-- PROJETS -->
 <section id="projets">
   <h2>Projets</h2>
   <ul>
@@ -176,7 +205,7 @@
     </li>
 
     <li onclick="showImages([
-      'images/panneau.PNG',
+      'images/panneau.png',
       'images/onduleur1.PNG',
       'images/onduleur.PNG'
     ])">
@@ -185,23 +214,23 @@
 
     <li onclick="showImages([
       'images/schelec.PNG',
-      'images/winrelais.PNG'
+      'images/Winrelais.png'
     ])">
       Système de conversion d'énergie
     </li>
 
     <li onclick="showImages([
-      'images/compteur.PNG',
-      'images/imprime.PNG'
+      'images/compteur.png',
+      'images/imprime.png'
     ])">
-      Concevoir, installer et maintenir un système de conversion et de gestion de l’énergie électrique
+      Concevoir et maintenir un système de gestion de l’énergie électrique
     </li>
 
     <li onclick="showImages([
       'images/circuit.PNG',
       'images/robot.PNG'
     ])">
-      Concevoir un robot mobile autonome capable de détecter et contourner des obstacles
+      Robot mobile autonome : détection et contournement d’obstacles
     </li>
 
   </ul>
@@ -209,7 +238,6 @@
 
 </main>
 
-<!-- CONTACT -->
 <aside id="contact-fixed">
   <h2>Contact</h2>
   <label>Nom :</label>
@@ -222,7 +250,6 @@
   <input type="email" value="sydethieamadou@gmail.com" readonly>
 </aside>
 
-<!-- LIGHTBOX -->
 <div id="lightbox">
   <img id="lightbox-img" src="">
   <button onclick="nextImage()">Suivant</button>
@@ -233,21 +260,45 @@
 let currentImages = [];
 let currentIndex = 0;
 
+/* LIGHTBOX */
 function showImages(images) {
   currentImages = images;
   currentIndex = 0;
   document.getElementById("lightbox-img").src = currentImages[0];
   document.getElementById("lightbox").style.display = "flex";
 }
-
 function nextImage() {
   currentIndex = (currentIndex + 1) % currentImages.length;
   document.getElementById("lightbox-img").src = currentImages[currentIndex];
 }
-
 function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
 }
+
+/* fermer si on clique autour de l'image */
+document.getElementById("lightbox").addEventListener("click", e => {
+  if (e.target.id === "lightbox") closeLightbox();
+});
+
+/* navigation au clavier */
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight") nextImage();
+  if (e.key === "Escape") closeLightbox();
+});
+
+/* MODE SOMBRE */
+document.getElementById("mode-btn").onclick = () => {
+  document.body.classList.toggle("dark");
+};
+
+/* ANIMATION SCROLL */
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("visible");
+  });
+},{ threshold:0.2 });
+sections.forEach(s=>observer.observe(s));
 </script>
 
 </body>
