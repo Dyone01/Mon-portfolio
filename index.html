@@ -87,6 +87,21 @@
     transform: translateY(-4px);
   }
 
+  /* APERÇU CV */
+  .cv-preview {
+    margin-top: 2rem;
+    border: 3px solid #00796b;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 600px;
+  }
+
+  .cv-preview iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
   /* PROJETS */
   #projets ul {
     list-style: none;
@@ -110,7 +125,7 @@
     box-shadow: 0 16px 30px rgba(0,0,0,0.15);
   }
 
-  /* CONTACT FIXE */
+  /* CONTACT */
   #contact-fixed {
     position: fixed;
     top: 80px;
@@ -174,25 +189,30 @@
 
 <main>
 
-<!-- À PROPOS -->
+<!-- A PROPOS -->
 <section id="apropos">
   <h2>À propos de moi</h2>
   <p>
     Je suis Mr SY Dethie Amadou, étudiant à l'IUT Créteil Vitry passionné d’ingénierie,
     d’automatisme, d’électronique et de systèmes énergétiques.
     Je souhaite poursuivre après le BUT GEII en école d’ingénieur en apprentissage
-    dans le domaine des énergies. J’aime analyser, concevoir et optimiser des systèmes
-    techniques complexes.
+    dans le domaine des énergies.
   </p>
 
+  <!-- BOUTON CV -->
   <div class="cv-download">
     <a href="CVSYDethie.pdf" target="_blank" download>
-      📄 Télécharger mon CV
+      📄 Mon CV
     </a>
+  </div>
+
+  <!-- APERÇU DU CV -->
+  <div class="cv-preview">
+    <iframe src="CVSYDethie.pdf"></iframe>
   </div>
 </section>
 
-<!-- EXPÉRIENCE -->
+<!-- EXPERIENCE -->
 <section id="experience">
   <h2>Expérience</h2>
 
@@ -200,16 +220,14 @@
   <h4>Groupe ADP</h4>
   <ul>
     <li>Maintenance et diagnostic sur systèmes automatisés de tri bagages.</li>
-    <li>Développement de solutions d'optimisation.</li>
-    <li>Mise en service et amélioration continue.</li>
+    <li>Optimisation des installations.</li>
   </ul>
 
   <h3>Avril – Juin 2025 — Stagiaire Technicien Électricité</h3>
   <h4>ENEDIS</h4>
   <ul>
-    <li>Travaux sur réseaux BT et HTA.</li>
-    <li>Interventions clientèle.</li>
-    <li>Assistance au diagnostic.</li>
+    <li>Réseaux BT et HTA.</li>
+    <li>Diagnostic et interventions terrain.</li>
   </ul>
 </section>
 
@@ -218,23 +236,10 @@
   <h2>Projets</h2>
   <ul>
     <li onclick="showImages(['images/station.PNG','images/tri.PNG'])">
-      Maintenance et optimisation d'une station de tri automatisée
+      Station de tri automatisée
     </li>
-
-    <li onclick="showImages(['images/panneau.png','images/onduleur1.PNG','images/onduleur.PNG'])">
-      Dimensionnement et étude d'un système photovoltaïque
-    </li>
-
-    <li onclick="showImages(['images/schelec.PNG','images/Winrelais.png'])">
-      Système de conversion d'énergie
-    </li>
-
-    <li onclick="showImages(['images/compteur.png','images/imprime.png'])">
-      Conversion et gestion de l’énergie électrique
-    </li>
-
-    <li onclick="showImages(['images/circuit.PNG','images/robot.PNG'])">
-      Robot mobile autonome avec détection d’obstacles
+    <li onclick="showImages(['images/panneau.png','images/onduleur.PNG'])">
+      Système photovoltaïque
     </li>
   </ul>
 </section>
@@ -244,14 +249,8 @@
 <!-- CONTACT -->
 <aside id="contact-fixed">
   <h2>Contact</h2>
-
-  <label>Nom :</label>
   <input type="text" value="SY" readonly>
-
-  <label>Prénom :</label>
   <input type="text" value="Dethie Amadou" readonly>
-
-  <label>Email :</label>
   <input type="email" value="sydethieamadou@gmail.com" readonly>
 </aside>
 
@@ -285,4 +284,3 @@ function closeLightbox() {
 
 </body>
 </html>
-
