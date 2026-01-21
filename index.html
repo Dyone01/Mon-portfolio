@@ -69,26 +69,27 @@
     text-align: center;
   }
 
-  .cv-download a {
-    display: inline-block;
+  .cv-download button {
     background: #00796b;
     color: white;
     padding: 1rem 2.5rem;
     border-radius: 30px;
-    text-decoration: none;
+    border: none;
     font-size: 1.1rem;
     font-weight: bold;
+    cursor: pointer;
     transition: 0.3s ease;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   }
 
-  .cv-download a:hover {
+  .cv-download button:hover {
     background: #004d40;
     transform: translateY(-4px);
   }
 
-  /* APERÇU CV */
+  /* APERÇU CV (caché par défaut) */
   .cv-preview {
+    display: none;
     margin-top: 2rem;
     border: 3px solid #00796b;
     border-radius: 15px;
@@ -193,21 +194,19 @@
 <section id="apropos">
   <h2>À propos de moi</h2>
   <p>
-    Je suis Mr SY Dethie Amadou, étudiant à l'IUT Créteil Vitry passionné d’ingénierie,
-    d’automatisme, d’électronique et de systèmes énergétiques.
-    Je souhaite poursuivre après le BUT GEII en école d’ingénieur en apprentissage
-    dans le domaine des énergies.
+    Je suis Mr SY Dethie Amadou, étudiant à l'IUT Créteil Vitry passionné
+    d’ingénierie, d’automatisme, d’électronique et de systèmes énergétiques.
+    Je souhaite poursuivre après le BUT GEII en école d’ingénieur
+    en apprentissage dans le domaine des énergies.
   </p>
 
-  <!-- BOUTON CV -->
+  <!-- BOUTON MON CV -->
   <div class="cv-download">
-    <a href="CVSYDethie.pdf" target="_blank" download>
-      📄 Mon CV
-    </a>
+    <button onclick="toggleCV()">📄 Mon CV</button>
   </div>
 
-  <!-- APERÇU DU CV -->
-  <div class="cv-preview">
+  <!-- APERÇU CV -->
+  <div class="cv-preview" id="cvPreview">
     <iframe src="CVSYDethie.pdf"></iframe>
   </div>
 </section>
@@ -215,19 +214,11 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <h2>Expérience</h2>
-
   <h3>2025 – 2026 (Alternance) — Technicien Systèmes Automatisés</h3>
   <h4>Groupe ADP</h4>
   <ul>
-    <li>Maintenance et diagnostic sur systèmes automatisés de tri bagages.</li>
-    <li>Optimisation des installations.</li>
-  </ul>
-
-  <h3>Avril – Juin 2025 — Stagiaire Technicien Électricité</h3>
-  <h4>ENEDIS</h4>
-  <ul>
-    <li>Réseaux BT et HTA.</li>
-    <li>Diagnostic et interventions terrain.</li>
+    <li>Maintenance des systèmes automatisés de tri bagages.</li>
+    <li>Optimisation et amélioration continue.</li>
   </ul>
 </section>
 
@@ -279,6 +270,12 @@ function nextImage() {
 
 function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
+}
+
+/* TOGGLE CV */
+function toggleCV() {
+  const preview = document.getElementById("cvPreview");
+  preview.style.display = (preview.style.display === "block") ? "none" : "block";
 }
 </script>
 
