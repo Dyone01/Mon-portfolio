@@ -6,150 +6,171 @@
 <title>Portfolio - Dethie Amadou SY</title>
 
 <style>
-  *, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
 
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #e0f7fa;
-    color: #222;
-  }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #e0f7fa;
+  color: #222;
+}
 
-  header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: #00796b;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    z-index: 1000;
-  }
+/* ---------- HEADER ---------- */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: #00796b;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  z-index: 1000;
+}
 
-  nav a {
-    color: #b2dfdb;
-    margin-left: 2rem;
-    text-decoration: none;
-    font-weight: 500;
-  }
+nav a {
+  color: #b2dfdb;
+  margin-left: 2rem;
+  text-decoration: none;
+  font-weight: 500;
+}
 
-  nav a:hover {
-    color: white;
-  }
+nav a:hover { color: white; }
 
-  main {
-    margin-top: 90px;
-    margin-right: 350px;
-    padding: 2rem;
-  }
+/* ---------- MAIN ---------- */
+main {
+  margin-top: 90px;
+  margin-right: 350px;
+  padding: 2rem;
+}
 
-  section {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    margin-bottom: 3rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  }
+section {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 3rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
 
-  h2 {
-    font-size: 2.4rem;
-    color: #00796b;
-    border-bottom: 4px solid #004d40;
-    padding-bottom: .4rem;
-    margin-bottom: 1rem;
-  }
+h2 {
+  font-size: 2.4rem;
+  color: #00796b;
+  border-bottom: 4px solid #004d40;
+  padding-bottom: .4rem;
+  margin-bottom: 1rem;
+}
 
-  /* ---------- PROJETS ---------- */
+/* ---------- PROJETS ---------- */
+#projets ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 1.5rem;
+  padding: 0;
+}
 
-  #projets ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-    gap: 1.5rem;
-    padding: 0;
-  }
+#projets li {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: .3s ease;
+  outline: none;
+}
 
-  #projets li {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: .3s ease;
-  }
+#projets li:hover,
+#projets li:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.15);
+}
 
-  #projets li:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 30px rgba(0,0,0,0.15);
-  }
+.project-title { font-weight: 600; }
 
-  .project-title {
-    font-weight: 600;
-  }
+.project-hint {
+  display: block;
+  margin-top: .4rem;
+  font-size: .9rem;
+  color: #00796b;
+}
 
-  .project-hint {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #00796b;
-    opacity: 0.8;
-  }
+.project-skills {
+  display: block;
+  margin-top: .4rem;
+  font-size: .85rem;
+  color: #555;
+}
 
-  #projets li:hover .project-hint {
-    opacity: 1;
-  }
+/* ---------- CONTACT ---------- */
+#contact-fixed {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  width: 330px;
+  background: white;
+  padding: 2rem;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: -6px 0 20px rgba(0,0,0,0.2);
+}
 
-  /* ---------- CONTACT ---------- */
+#contact-fixed input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: .6rem;
+  border-radius: 10px;
+  border: 2px solid #00796b;
+  background: #e0f2f1;
+}
 
+/* ---------- LIGHTBOX ---------- */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 3000;
+}
+
+#lightbox img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+  border: 4px solid white;
+  margin-bottom: 10px;
+  animation: zoomIn .3s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+#lightbox button {
+  margin: 5px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#image-counter {
+  color: white;
+  margin-bottom: 10px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  main { margin-right: 0; }
   #contact-fixed {
-    position: fixed;
-    top: 80px;
-    right: 0;
-    width: 330px;
-    background: white;
-    padding: 2rem;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    box-shadow: -6px 0 20px rgba(0,0,0,0.2);
+    position: static;
+    width: auto;
+    border-radius: 15px;
+    margin: 2rem;
   }
-
-  #contact-fixed input {
-    width: 100%;
-    margin-bottom: 1rem;
-    padding: .6rem;
-    border-radius: 10px;
-    border: 2px solid #00796b;
-    background: #e0f2f1;
-  }
-
-  /* ---------- LIGHTBOX ---------- */
-
-  #lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 3000;
-  }
-
-  #lightbox img {
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 10px;
-    border: 4px solid white;
-    margin-bottom: 20px;
-  }
-
-  #lightbox button {
-    margin: 5px;
-    padding: 10px 25px;
-    font-size: 1rem;
-    cursor: pointer;
-  }
+}
 </style>
 </head>
 
@@ -169,62 +190,69 @@
 <section id="apropos">
   <h2>À propos de moi</h2>
   <p>
-    Je suis Mr SY Dethie Amadou, étudiant à l'IUT Créteil Vitry passionné
-    d’ingénierie, d’automatisme, d’électronique et de systèmes énergétiques.
-    Je souhaite poursuivre après le BUT GEII en école d’ingénieur
-    en apprentissage dans le domaine des énergies.
+    Étudiant en BUT GEII à l'IUT Créteil Vitry, passionné par l’automatisme,
+    l’électronique et les systèmes énergétiques.
   </p>
 </section>
 
 <section id="experience">
   <h2>Expérience</h2>
-  <h3>2025 – 2026 (Alternance) — Technicien Systèmes Automatisés</h3>
+  <h3>2025 – 2026 — Technicien Systèmes Automatisés (Alternance)</h3>
   <h4>Groupe ADP</h4>
 </section>
 
 <section id="projets">
   <h2>Projets</h2>
-
-  <!-- MESSAGE EXPLICITE -->
-  <p style="color:#555; font-style: italic; margin-bottom:1.5rem;">
+  <p style="font-style:italic;color:#555">
     Cliquez sur un projet pour visualiser les images associées.
   </p>
 
   <ul>
-    <li onclick="showImages(['images/station.PNG','images/tri.PNG'])">
-      <span class="project-title">Maintenance et optimisation d'une station de tri automatisée</span>
+    <li tabindex="0" role="button"
+        onclick="showImages(['images/station.PNG','images/tri.PNG'])"
+        onkeydown="if(event.key==='Enter') this.click();">
+      <span class="project-title">Maintenance d'une station de tri automatisée</span>
       <span class="project-hint">📸 Voir images</span>
+      <span class="project-skills">Automatisme · Maintenance · Diagnostic</span>
     </li>
 
-    <li onclick="showImages(['images/panneau.png','images/onduleur1.PNG','images/onduleur.PNG'])">
-      <span class="project-title">Dimensionnement et étude d'un système photovoltaïque</span>
+    <li tabindex="0" role="button"
+        onclick="showImages(['images/panneau.png','images/onduleur.PNG'])"
+        onkeydown="if(event.key==='Enter') this.click();">
+      <span class="project-title">Système photovoltaïque</span>
       <span class="project-hint">📸 Voir images</span>
+      <span class="project-skills">Énergies renouvelables · Dimensionnement</span>
     </li>
 
-    <li onclick="showImages(['images/schelec.PNG','images/puis.png'])">
-      <span class="project-title">Système de conversion et de gestion de l'énergie électrique</span>
+    <li tabindex="0" role="button"
+        onclick="showImages(['images/circuit.PNG','images/robot.PNG'])"
+        onkeydown="if(event.key==='Enter') this.click();">
+      <span class="project-title">Robot mobile autonome</span>
       <span class="project-hint">📸 Voir images</span>
-    </li>
-
-    <li onclick="showImages(['images/ecran.png','images/carte.png','images/compteur.png','images/imprime.png'])">
-      <span class="project-title">Concevoir, installer et maintenir un système de conversion d’énergie</span>
-      <span class="project-hint">📸 Voir images</span>
-    </li>
-
-    <li onclick="showImages(['images/circuit.PNG','images/robot.PNG'])">
-      <span class="project-title">Conception d’un robot mobile autonome</span>
-      <span class="project-hint">📸 Voir images</span>
+      <span class="project-skills">Électronique · Programmation · Capteurs</span>
     </li>
   </ul>
 </section>
 
 </main>
 
+<aside id="contact-fixed">
+  <h2>Contact</h2>
+  <input value="SY" readonly>
+  <input value="Dethie Amadou" readonly>
+  <input value="sydethieamadou@gmail.com" readonly>
+</aside>
+
 <div id="lightbox">
-  <img id="lightbox-img" src="">
+  <p id="image-counter"></p>
+  <img id="lightbox-img">
   <button onclick="nextImage()">Suivant</button>
   <button onclick="closeLightbox()">Fermer</button>
 </div>
+
+<footer style="text-align:center;padding:1.5rem;color:#555">
+  © 2026 – Dethie Amadou SY · Portfolio BUT GEII
+</footer>
 
 <script>
 let currentImages = [];
@@ -233,18 +261,28 @@ let currentIndex = 0;
 function showImages(images) {
   currentImages = images;
   currentIndex = 0;
-  document.getElementById("lightbox-img").src = currentImages[0];
   document.getElementById("lightbox").style.display = "flex";
+  updateImage();
 }
 
 function nextImage() {
   currentIndex = (currentIndex + 1) % currentImages.length;
+  updateImage();
+}
+
+function updateImage() {
   document.getElementById("lightbox-img").src = currentImages[currentIndex];
+  document.getElementById("image-counter").textContent =
+    `Image ${currentIndex + 1} / ${currentImages.length}`;
 }
 
 function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
 }
+
+document.getElementById("lightbox").onclick = function(e) {
+  if (e.target === this) closeLightbox();
+};
 </script>
 
 </body>
