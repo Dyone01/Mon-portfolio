@@ -234,4 +234,82 @@ h2 {
       <span class="project-skills">Énergies renouvelables · Dimensionnement · PV</span>
     </li>
 
-    <li tabindex="0" r
+    <li tabindex="0" role="button"
+        onclick="showImages(['images/schelec.PNG','images/puis.png'])"
+        onkeydown="if(event.key==='Enter') this.click();">
+      <span class="project-title">Conversion et gestion de l’énergie électrique</span>
+      <span class="project-hint">📸 Voir images</span>
+      <span class="project-skills">Électronique de puissance · Conversion</span>
+    </li>
+
+    <li tabindex="0" role="button"
+        onclick="showImages(['images/ecran.png','images/carte.png','images/compteur.png','images/imprime.png'])"
+        onkeydown="if(event.key==='Enter') this.click();">
+      <span class="project-title">Système de gestion d’énergie électrique</span>
+      <span class="project-hint">📸 Voir images</span>
+      <span class="project-skills">Instrumentation · Supervision · Mesures</span>
+    </li>
+
+    <li tabindex="0" role="button"
+        onclick="showImages(['images/circuit.PNG','images/robot.PNG'])"
+        onkeydown="if(event.key==='Enter') this.click();">
+      <span class="project-title">Robot mobile autonome</span>
+      <span class="project-hint">📸 Voir images</span>
+      <span class="project-skills">Programmation · Capteurs · Électronique</span>
+    </li>
+  </ul>
+</section>
+
+</main>
+
+<aside id="contact-fixed">
+  <h2>Contact</h2>
+  <input value="SY" readonly>
+  <input value="Dethie Amadou" readonly>
+  <input value="sydethieamadou@gmail.com" readonly>
+</aside>
+
+<div id="lightbox">
+  <p id="image-counter"></p>
+  <img id="lightbox-img">
+  <button onclick="nextImage()">Suivant</button>
+  <button onclick="closeLightbox()">Fermer</button>
+</div>
+
+<footer style="text-align:center;padding:1.5rem;color:#555">
+  © 2026 – Dethie Amadou SY · Portfolio BUT GEII
+</footer>
+
+<script>
+let currentImages = [];
+let currentIndex = 0;
+
+function showImages(images) {
+  currentImages = images;
+  currentIndex = 0;
+  document.getElementById("lightbox").style.display = "flex";
+  updateImage();
+}
+
+function nextImage() {
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  updateImage();
+}
+
+function updateImage() {
+  document.getElementById("lightbox-img").src = currentImages[currentIndex];
+  document.getElementById("image-counter").textContent =
+    `Image ${currentIndex + 1} / ${currentImages.length}`;
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+document.getElementById("lightbox").onclick = function(e) {
+  if (e.target === this) closeLightbox();
+};
+</script>
+
+</body>
+</html>
