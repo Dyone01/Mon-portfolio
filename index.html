@@ -15,7 +15,7 @@ body {
   color: #222;
 }
 
-/* ---------- HEADER ---------- */
+/* HEADER */
 header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -32,12 +32,11 @@ nav a {
   color: #b2dfdb;
   margin-left: 2rem;
   text-decoration: none;
-  font-weight: 500;
 }
 
 nav a:hover { color: white; }
 
-/* ---------- MAIN ---------- */
+/* MAIN */
 main {
   margin-top: 90px;
   margin-right: 350px;
@@ -57,10 +56,9 @@ h2 {
   color: #00796b;
   border-bottom: 4px solid #004d40;
   padding-bottom: .4rem;
-  margin-bottom: 1rem;
 }
 
-/* ---------- PROJETS ---------- */
+/* PROJETS */
 #projets ul {
   list-style: none;
   display: grid;
@@ -101,7 +99,7 @@ h2 {
   color: #555;
 }
 
-/* ---------- CONTACT ---------- */
+/* CONTACT */
 #contact-fixed {
   position: fixed;
   top: 80px;
@@ -123,7 +121,7 @@ h2 {
   background: #e0f2f1;
 }
 
-/* ---------- LIGHTBOX ---------- */
+/* LIGHTBOX */
 #lightbox {
   display: none;
   position: fixed;
@@ -149,19 +147,18 @@ h2 {
   to { transform: scale(1); opacity: 1; }
 }
 
-#lightbox button {
-  margin: 5px;
-  padding: 10px 25px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
 #image-counter {
   color: white;
   margin-bottom: 10px;
 }
 
-/* ---------- RESPONSIVE ---------- */
+#lightbox button {
+  margin: 5px;
+  padding: 10px 25px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
 @media (max-width: 900px) {
   main { margin-right: 0; }
   #contact-fixed {
@@ -197,8 +194,21 @@ h2 {
 
 <section id="experience">
   <h2>Expérience</h2>
-  <h3>2025 – 2026 — Technicien Systèmes Automatisés (Alternance)</h3>
+
+  <h3>2025 – 2026 (Alternance) — Technicien Systèmes Automatisés</h3>
   <h4>Groupe ADP</h4>
+  <ul>
+    <li>Maintenance et diagnostic sur systèmes automatisés de tri bagages.</li>
+    <li>Optimisation et amélioration continue.</li>
+  </ul>
+
+  <h3>Avril – Juin 2025 — Stagiaire Technicien Électricité</h3>
+  <h4>ENEDIS</h4>
+  <ul>
+    <li>Travaux sur réseaux BT et HTA.</li>
+    <li>Interventions clientèle.</li>
+    <li>Assistance au diagnostic.</li>
+  </ul>
 </section>
 
 <section id="projets">
@@ -211,79 +221,17 @@ h2 {
     <li tabindex="0" role="button"
         onclick="showImages(['images/station.PNG','images/tri.PNG'])"
         onkeydown="if(event.key==='Enter') this.click();">
-      <span class="project-title">Maintenance d'une station de tri automatisée</span>
+      <span class="project-title">Maintenance et optimisation d'une station de tri automatisée</span>
       <span class="project-hint">📸 Voir images</span>
       <span class="project-skills">Automatisme · Maintenance · Diagnostic</span>
     </li>
 
     <li tabindex="0" role="button"
-        onclick="showImages(['images/panneau.png','images/onduleur.PNG'])"
+        onclick="showImages(['images/panneau.png','images/onduleur1.PNG','images/onduleur.PNG'])"
         onkeydown="if(event.key==='Enter') this.click();">
-      <span class="project-title">Système photovoltaïque</span>
+      <span class="project-title">Dimensionnement d’un système photovoltaïque</span>
       <span class="project-hint">📸 Voir images</span>
-      <span class="project-skills">Énergies renouvelables · Dimensionnement</span>
+      <span class="project-skills">Énergies renouvelables · Dimensionnement · PV</span>
     </li>
 
-    <li tabindex="0" role="button"
-        onclick="showImages(['images/circuit.PNG','images/robot.PNG'])"
-        onkeydown="if(event.key==='Enter') this.click();">
-      <span class="project-title">Robot mobile autonome</span>
-      <span class="project-hint">📸 Voir images</span>
-      <span class="project-skills">Électronique · Programmation · Capteurs</span>
-    </li>
-  </ul>
-</section>
-
-</main>
-
-<aside id="contact-fixed">
-  <h2>Contact</h2>
-  <input value="SY" readonly>
-  <input value="Dethie Amadou" readonly>
-  <input value="sydethieamadou@gmail.com" readonly>
-</aside>
-
-<div id="lightbox">
-  <p id="image-counter"></p>
-  <img id="lightbox-img">
-  <button onclick="nextImage()">Suivant</button>
-  <button onclick="closeLightbox()">Fermer</button>
-</div>
-
-<footer style="text-align:center;padding:1.5rem;color:#555">
-  © 2026 – Dethie Amadou SY · Portfolio BUT GEII
-</footer>
-
-<script>
-let currentImages = [];
-let currentIndex = 0;
-
-function showImages(images) {
-  currentImages = images;
-  currentIndex = 0;
-  document.getElementById("lightbox").style.display = "flex";
-  updateImage();
-}
-
-function nextImage() {
-  currentIndex = (currentIndex + 1) % currentImages.length;
-  updateImage();
-}
-
-function updateImage() {
-  document.getElementById("lightbox-img").src = currentImages[currentIndex];
-  document.getElementById("image-counter").textContent =
-    `Image ${currentIndex + 1} / ${currentImages.length}`;
-}
-
-function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
-}
-
-document.getElementById("lightbox").onclick = function(e) {
-  if (e.target === this) closeLightbox();
-};
-</script>
-
-</body>
-</html>
+    <li tabindex="0" r
