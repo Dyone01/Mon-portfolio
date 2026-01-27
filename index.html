@@ -15,7 +15,6 @@
     color: #222;
   }
 
-  /* HEADER */
   header {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -39,14 +38,12 @@
     color: white;
   }
 
-  /* MAIN */
   main {
     margin-top: 90px;
     margin-right: 350px;
     padding: 2rem;
   }
 
-  /* SECTIONS */
   section {
     background: white;
     padding: 2rem;
@@ -60,50 +57,11 @@
     color: #00796b;
     border-bottom: 4px solid #004d40;
     padding-bottom: .4rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
-  /* BOUTON CV */
-  .cv-download {
-    margin-top: 2rem;
-    text-align: center;
-  }
+  /* ---------- PROJETS ---------- */
 
-  .cv-download button {
-    background: #00796b;
-    color: white;
-    padding: 1rem 2.5rem;
-    border-radius: 30px;
-    border: none;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  }
-
-  .cv-download button:hover {
-    background: #004d40;
-    transform: translateY(-4px);
-  }
-
-  /* APERÇU CV (caché par défaut) */
-  .cv-preview {
-    display: none;
-    margin-top: 2rem;
-    border: 3px solid #00796b;
-    border-radius: 15px;
-    overflow: hidden;
-    height: 600px;
-  }
-
-  .cv-preview iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  /* PROJETS */
   #projets ul {
     list-style: none;
     display: grid;
@@ -126,7 +84,24 @@
     box-shadow: 0 16px 30px rgba(0,0,0,0.15);
   }
 
-  /* CONTACT */
+  .project-title {
+    font-weight: 600;
+  }
+
+  .project-hint {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #00796b;
+    opacity: 0.8;
+  }
+
+  #projets li:hover .project-hint {
+    opacity: 1;
+  }
+
+  /* ---------- CONTACT ---------- */
+
   #contact-fixed {
     position: fixed;
     top: 80px;
@@ -148,7 +123,8 @@
     background: #e0f2f1;
   }
 
-  /* LIGHTBOX */
+  /* ---------- LIGHTBOX ---------- */
+
   #lightbox {
     display: none;
     position: fixed;
@@ -190,7 +166,6 @@
 
 <main>
 
-<!-- A PROPOS -->
 <section id="apropos">
   <h2>À propos de moi</h2>
   <p>
@@ -199,53 +174,52 @@
     Je souhaite poursuivre après le BUT GEII en école d’ingénieur
     en apprentissage dans le domaine des énergies.
   </p>
-
-  <!-- BOUTON MON CV -->
-  <div class="cv-download">
-    <button onclick="toggleCV()">📄 Mon CV</button>
-  </div>
-
-  <!-- APERÇU CV -->
-  <div class="cv-preview" id="cvPreview">
-    <iframe src="CVSYDethie.pdf"></iframe>
-  </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
   <h2>Expérience</h2>
   <h3>2025 – 2026 (Alternance) — Technicien Systèmes Automatisés</h3>
   <h4>Groupe ADP</h4>
-  <ul>
-    <li>Maintenance des systèmes automatisés de tri bagages.</li>
-    <li>Optimisation et amélioration continue.</li>
-  </ul>
 </section>
 
-<!-- PROJETS -->
 <section id="projets">
   <h2>Projets</h2>
+
+  <!-- MESSAGE EXPLICITE -->
+  <p style="color:#555; font-style: italic; margin-bottom:1.5rem;">
+    Cliquez sur un projet pour visualiser les images associées.
+  </p>
+
   <ul>
     <li onclick="showImages(['images/station.PNG','images/tri.PNG'])">
-      Station de tri automatisée
+      <span class="project-title">Maintenance et optimisation d'une station de tri automatisée</span>
+      <span class="project-hint">📸 Voir images</span>
     </li>
-    <li onclick="showImages(['images/panneau.png','images/onduleur.PNG'])">
-      Système photovoltaïque
+
+    <li onclick="showImages(['images/panneau.png','images/onduleur1.PNG','images/onduleur.PNG'])">
+      <span class="project-title">Dimensionnement et étude d'un système photovoltaïque</span>
+      <span class="project-hint">📸 Voir images</span>
+    </li>
+
+    <li onclick="showImages(['images/schelec.PNG','images/puis.png'])">
+      <span class="project-title">Système de conversion et de gestion de l'énergie électrique</span>
+      <span class="project-hint">📸 Voir images</span>
+    </li>
+
+    <li onclick="showImages(['images/ecran.png','images/carte.png','images/compteur.png','images/imprime.png'])">
+      <span class="project-title">Concevoir, installer et maintenir un système de conversion d’énergie</span>
+      <span class="project-hint">📸 Voir images</span>
+    </li>
+
+    <li onclick="showImages(['images/circuit.PNG','images/robot.PNG'])">
+      <span class="project-title">Conception d’un robot mobile autonome</span>
+      <span class="project-hint">📸 Voir images</span>
     </li>
   </ul>
 </section>
 
 </main>
 
-<!-- CONTACT -->
-<aside id="contact-fixed">
-  <h2>Contact</h2>
-  <input type="text" value="SY" readonly>
-  <input type="text" value="Dethie Amadou" readonly>
-  <input type="email" value="sydethieamadou@gmail.com" readonly>
-</aside>
-
-<!-- LIGHTBOX -->
 <div id="lightbox">
   <img id="lightbox-img" src="">
   <button onclick="nextImage()">Suivant</button>
@@ -270,12 +244,6 @@ function nextImage() {
 
 function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
-}
-
-/* TOGGLE CV */
-function toggleCV() {
-  const preview = document.getElementById("cvPreview");
-  preview.style.display = (preview.style.display === "block") ? "none" : "block";
 }
 </script>
 
